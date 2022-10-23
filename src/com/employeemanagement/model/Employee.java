@@ -4,12 +4,12 @@ package com.employeemanagement.model;
 
 public class Employee {
 
-	public String employeeId; //Employee id
-	public String fullName; //Full Name
-	public String address;	//Address
-	public String facultyName;	//Faculty Name
-	public String department;	//Department
-	public String designation;	//Designation
+	public String employeeId;
+	public String fullName;
+	public String address;
+	public String facultyName;
+	public String department;
+	public String designation;
 	
 	public Employee() {
 		super();

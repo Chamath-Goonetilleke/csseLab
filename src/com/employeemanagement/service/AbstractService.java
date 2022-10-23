@@ -7,8 +7,7 @@ import com.employeemanagement.model.Employee;
 
 public abstract class AbstractService extends c1 {
 	
-	
-	
+
 	abstract void getEmployeesFromXML() throws Exception;
 	abstract void createEmployeeTable() throws Exception;
 	abstract void addEmployee() throws Exception;

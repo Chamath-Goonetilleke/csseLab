@@ -4,11 +4,6 @@ import com.employeemanagement.commons.CommonConstants;
 import com.employeemanagement.commons.DBConnectionUtil;
 import com.employeemanagement.commons.QueryUtil;
 import com.employeemanagement.commons.XSLTransformUtil;
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 56c2c4f6fde61321fbf87c70e74fd4d837c0a3ef
 import com.employeemanagement.model.Employee;
 
 import java.sql.Connection;
@@ -33,12 +28,12 @@ public class EmployeeServiceImpl extends AbstractService{
 	private Statement statement;
 
 	private PreparedStatement preparedStatement;
-	
-	
+
+
 //	get DB connection from DBUril class
 	public EmployeeServiceImpl() throws XPathExpressionException, SQLException {
 
-		connection = DBConnectionUtil.getConnection();	
+		connection = DBConnectionUtil.getConnection();
 	}
 
 //	get Employees Details From XML
@@ -55,7 +50,6 @@ public class EmployeeServiceImpl extends AbstractService{
 				employee.setDesignation(list.get(CommonConstants.XPATH_DESIGNATION_KEY));
 
 				employeeList.add(employee);
-//				System.out.println(employee.toString() + "\n");
 				LOG.info(employee.toString() + "\n");
 			}
 		} catch (ClassNotFoundException e) {
@@ -175,15 +169,15 @@ public class EmployeeServiceImpl extends AbstractService{
 
 		LOG.info("Employee ID" + "\t\t" + "Full Name" + "\t\t" + "Address" + "\t\t" + "Faculty Name" + "\t\t"
 				+ "Department" + "\t\t" + "Designation" + "\n");
-		
+
 		LOG.info("================================================================================================================");
 		for (Employee employee : l) {
-			
+
 			LOG.info(employee.getEmployeeId() + "\t" + employee.getFullName() + "\t\t" + employee.getAddress()
 			+ "\t" + employee.getFacultyName() + "\t" + employee.getDepartment() + "\t"
 			+ employee.getDesignation() + "\n");
 			LOG.info("----------------------------------------------------------------------------------------------------------------");
-			
+
 		}
 	}
 
