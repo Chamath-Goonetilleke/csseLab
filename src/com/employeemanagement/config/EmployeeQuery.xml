@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Querys>
-	<!-- q1 -->
+	<!-- employee Table Create -->
 	<query id="empTableCreate">
         <![CDATA[ CREATE TABLE employees(EmployeeID varchar(10) not null, Fullname varchar(25), Address  varchar(50), Faculty varchar(20),Department varchar(25), Designation varchar(20), primary key (EmployeeID))]]>
 	</query>
-	<!-- q2 -->
+	<!-- drop Employee -->
 	<query id="dropEmp">
          <![CDATA[ DROP TABLE IF EXISTS employees ]]>
 	</query>
-	<!-- q3 -->
+	<!-- insert Employee -->
 	<query id="insertEmp">
         <![CDATA[insert into employees (EmployeeID, Fullname, Address, Faculty, Department, Designation) values (?, ?, ?, ?, ?, ?)]]>
 	</query>
-	<!-- q4 -->
+	<!-- get Employee By Id -->
 	<query id="getEmpById">
          <![CDATA[select * from employees where employees.EmployeeID = ?]]>
 	</query>
-	<!-- q5 -->
+	<!-- get All Employee -->
 	<query id="getAllEmp">
          <![CDATA[ select * from employees]]>
 	</query>
-	<!-- q6 -->
+	<!-- delete Employee By Id -->
 	<query id="deleteEmpById">
          <![CDATA[ delete from employees where employees.EmployeeID = ?]]>
 	</query>
