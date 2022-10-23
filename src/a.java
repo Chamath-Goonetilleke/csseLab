@@ -87,7 +87,7 @@ public class a extends c1 {
 		}
 	}
 
-	public void eMPLOYEEGETBYID(String eid) {
+	public void getEmployeeById(String eid) {
 
 		Employee employee = new Employee();
 		try {
