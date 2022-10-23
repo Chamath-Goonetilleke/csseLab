@@ -1,9 +1,8 @@
 package com.employeemanagement.service;
 
-import java.util.ArrayList;
-
 import com.employeemanagement.commons.CommonUtil;
 import com.employeemanagement.model.Employee;
+import java.util.ArrayList;
 
 public abstract class AbstractService extends CommonUtil {
 	
