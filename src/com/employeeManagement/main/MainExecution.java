@@ -1,12 +1,12 @@
-package com.employeemanagement.main;
+package com.employeeManagement.main;
 
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.xpath.XPathExpressionException;
 
-import com.employeemanagement.commons.XSLTransformUtil;
-import com.employeemanagement.service.EmployeeServiceImpl;
+import com.employeeManagement.commons.XSLTransformUtil;
+import com.employeeManagement.service.EmployeeServiceImpl;
 
 public class MainExecution {
 

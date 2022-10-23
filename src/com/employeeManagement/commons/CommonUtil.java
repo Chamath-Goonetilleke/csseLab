@@ -1,4 +1,4 @@
-package com.employeemanagement.commons;
+package com.employeeManagement.commons;
 
 import java.io.IOException;
 import java.util.logging.Level;

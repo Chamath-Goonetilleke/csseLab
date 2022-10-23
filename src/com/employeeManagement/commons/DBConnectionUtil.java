@@ -1,4 +1,6 @@
-package com.employeemanagement.commons;
+package com.employeeManagement.commons;
+
+import com.employeeManagement.service.EmployeeServiceImpl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,9 +8,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Properties;
-
-
-import com.employeemanagement.service.EmployeeServiceImpl;
 
 public class DBConnectionUtil {
 	

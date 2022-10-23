@@ -1,4 +1,4 @@
-package com.employeemanagement.commons;
+package com.employeeManagement.commons;
 
 public class CommonConstants {
 

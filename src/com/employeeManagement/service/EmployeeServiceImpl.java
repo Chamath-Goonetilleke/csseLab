@@ -1,10 +1,10 @@
-package com.employeemanagement.service;
+package com.employeeManagement.service;
 
-import com.employeemanagement.commons.CommonConstants;
-import com.employeemanagement.commons.DBConnectionUtil;
-import com.employeemanagement.commons.QueryUtil;
-import com.employeemanagement.commons.XSLTransformUtil;
-import com.employeemanagement.model.Employee;
+import com.employeeManagement.commons.CommonConstants;
+import com.employeeManagement.commons.DBConnectionUtil;
+import com.employeeManagement.commons.QueryUtil;
+import com.employeeManagement.commons.XSLTransformUtil;
+import com.employeeManagement.model.Employee;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
