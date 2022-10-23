@@ -49,9 +49,7 @@ public class EmployeeServiceImpl extends AbstractService{
 	@Override
 	public void getEmployeesFromXML() throws Exception {
 		try {
-			int size = XSLTransformUtil.xmlXPath().size();
-			for (int i = CommonConstants.ZERO; i < size; i++) {
-				Map<String, String> list = XSLTransformUtil.xmlXPath().get(i);
+			for (Map<String, String> list: XSLTransformUtil.xmlXPath()) {
 				Employee employee = new Employee();
 				employee.setEmployeeId(list.get(CommonConstants.XPATH_EMPLOYEE_ID_KEY));
 				employee.setFullName(list.get(CommonConstants.XPATH_EMPLOYEE_NAME_KEY));
