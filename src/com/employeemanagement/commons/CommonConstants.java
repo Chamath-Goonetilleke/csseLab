@@ -71,7 +71,7 @@ public class CommonConstants {
 	// EmployeeQuery.xml file query identification q6
 	public static final String Q6 = "q6";
 
-	//
+	// 
 	public static final String XML_PATH_PREFIX = "//Employees/Employee";
 
 	public static final String XML_PATH_EMPLOYEEE_ID = "EmployeeID";

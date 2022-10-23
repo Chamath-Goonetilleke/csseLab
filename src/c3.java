@@ -46,32 +46,32 @@ public class c3 extends c1 {
 
 		for (int i = 1; i <= n; i++) {
 			m = new HashMap<String, String>();
-			m.put("XpathEmployeeIDKey",
+			m.put(CommonConstants.XPATH_EMPLOYEE_ID_KEY,
 					(String) employeeRequest.compile(CommonConstants.XML_PATH_PREFIX + CommonConstants.LEFT_BRACKET + i
 							+ CommonConstants.RIGHT_BRACKET + CommonConstants.BACKSLASH
 							+ CommonConstants.XML_PATH_EMPLOYEEE_ID + CommonConstants.BACKSLASH
 							+ CommonConstants.XML_TEXT_METHOD).evaluate(document, XPathConstants.STRING));
-			m.put("XpathEmployeeNameKey",
+			m.put(CommonConstants.XPATH_EMPLOYEE_NAME_KEY,
 					(String) employeeRequest.compile(CommonConstants.XML_PATH_PREFIX + CommonConstants.LEFT_BRACKET + i
 							+ CommonConstants.RIGHT_BRACKET + CommonConstants.BACKSLASH
 							+ CommonConstants.XML_PATH_EMPLOYEE_FULL_NAME + CommonConstants.BACKSLASH
 							+ CommonConstants.XML_TEXT_METHOD).evaluate(document, XPathConstants.STRING));
-			m.put("XpathEmployeeAddressKey",
+			m.put(CommonConstants.XPATH_EMPLOYEE_ADDRESS_KEY,
 					(String) employeeRequest.compile(CommonConstants.XML_PATH_PREFIX + CommonConstants.LEFT_BRACKET + i
 							+ CommonConstants.RIGHT_BRACKET + CommonConstants.BACKSLASH
 							+ CommonConstants.XML_PATH_EMPLOYEE_ADDRESS + CommonConstants.BACKSLASH
 							+ CommonConstants.XML_TEXT_METHOD).evaluate(document, XPathConstants.STRING));
-			m.put("XpathFacultyNameKey",
+			m.put(CommonConstants.XPATH_FACULTY_NAME_KEY,
 					(String) employeeRequest.compile(CommonConstants.XML_PATH_PREFIX + CommonConstants.LEFT_BRACKET + i
 							+ CommonConstants.RIGHT_BRACKET + CommonConstants.BACKSLASH
 							+ CommonConstants.XML_PATH_FACULTY_NAME + CommonConstants.BACKSLASH
 							+ CommonConstants.XML_TEXT_METHOD).evaluate(document, XPathConstants.STRING));
-			m.put("XpathDepartmentKey",
+			m.put(CommonConstants.XPATH_DEPARTMENT_KEY,
 					(String) employeeRequest.compile(CommonConstants.XML_PATH_PREFIX + CommonConstants.LEFT_BRACKET + i
 							+ CommonConstants.RIGHT_BRACKET + CommonConstants.BACKSLASH
 							+ CommonConstants.XML_PATH_DEPARTMENT + CommonConstants.BACKSLASH
 							+ CommonConstants.XML_TEXT_METHOD).evaluate(document, XPathConstants.STRING));
-			m.put("XpathDesignationKey",
+			m.put(CommonConstants.XPATH_DESIGNATION_KEY,
 					(String) employeeRequest.compile(CommonConstants.XML_PATH_PREFIX + CommonConstants.LEFT_BRACKET + i
 							+ CommonConstants.RIGHT_BRACKET + CommonConstants.BACKSLASH
 							+ CommonConstants.XML_PATH_DESIGNATION + CommonConstants.BACKSLASH
