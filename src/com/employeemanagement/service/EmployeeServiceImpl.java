@@ -1,17 +1,13 @@
 package com.employeemanagement.service;
 
-import org.xml.sax.SAXException;
-
 import com.employeemanagement.commons.CommonConstants;
 import com.employeemanagement.commons.QueryUtil;
 import com.employeemanagement.commons.XSLTransformUtil;
-import com.employeemanagement.commons.c1;
 import com.employeemanagement.model.Employee;
 
 import java.sql.Connection;
 import java.util.logging.Logger;
 import java.sql.DriverManager;
-import javax.xml.parsers.ParserConfigurationException;
 import java.sql.PreparedStatement;
 import javax.xml.xpath.XPathExpressionException;
 
@@ -19,7 +15,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.sql.Statement;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
