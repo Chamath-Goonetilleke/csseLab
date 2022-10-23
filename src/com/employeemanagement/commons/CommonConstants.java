@@ -53,22 +53,22 @@ public class CommonConstants {
 	// EmployeeQuery.xml file 'id' attribute of 'query' tag
 	public static final String ID = "id";
 
-	// EmployeeQuery.xml file query identification q1
+	// EmployeeQuery.xml file query identification EMP_TABLE_CREATE
 	public static final String EMP_TABLE_CREATE = "empTableCreate";
 
-	// EmployeeQuery.xml file query identification q2
+	// EmployeeQuery.xml file query identification DROP_EMP
 	public static final String DROP_EMP = "dropEmp";
 
-	// EmployeeQuery.xml file query identification q3
+	// EmployeeQuery.xml file query identification INSERT_EMP
 	public static final String INSERT_EMP = "insertEmp";
 
-	// EmployeeQuery.xml file query identification q4
+	// EmployeeQuery.xml file query identification GET_EMP_BY_ID
 	public static final String GET_EMP_BY_ID = "getEmpById";
 
-	// EmployeeQuery.xml file query identification q5
+	// EmployeeQuery.xml file query identification GET_ALL_EMP
 	public static final String GET_ALL_EMP = "getAllEmp";
 
-	// EmployeeQuery.xml file query identification q6
+	// EmployeeQuery.xml file query identification DELETE_EMP_BY_ID
 	public static final String DELETE_EMP_BY_ID = "deleteEmpById";
 
 	// 
