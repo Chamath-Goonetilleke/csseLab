@@ -43,12 +43,12 @@ public class XSLTransformUtil extends c1 {
 
         XPath employeeRequest = XPathFactory.newInstance().newXPath();
 
-        int n = Integer.parseInt((String) employeeRequest
+        int requestCount = Integer.parseInt((String) employeeRequest
                 .compile(CommonConstants.COUNT_METHOD_NAME + CommonConstants.LEFT_PARANTHESIS
                         + CommonConstants.XML_PATH_PREFIX + CommonConstants.RIGHT_PARANTHESIS)
                 .evaluate(document, XPathConstants.STRING));
 
-        for (int i = CommonConstants.ONE; i <= n; i++) {
+        for (int i = CommonConstants.ONE; i <= requestCount; i++) {
         	empMap = new HashMap<String, String>();
         	empMap.put(CommonConstants.XPATH_EMPLOYEE_ID_KEY,
                     (String) employeeRequest.compile(CommonConstants.XML_PATH_PREFIX + CommonConstants.LEFT_BRACKET + i
