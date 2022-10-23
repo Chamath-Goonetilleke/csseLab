@@ -3,6 +3,7 @@ package com.employeemanagement.service;
 import com.employeemanagement.commons.CommonConstants;
 import com.employeemanagement.commons.QueryUtil;
 import com.employeemanagement.commons.XSLTransformUtil;
+import com.employeemanagement.config.DBConnectionUtil;
 import com.employeemanagement.model.Employee;
 
 import java.sql.Connection;
@@ -30,15 +31,9 @@ public class EmployeeServiceImpl extends AbstractService{
 	private PreparedStatement preparedStatement;
 
 	public EmployeeServiceImpl() throws XPathExpressionException, SQLException {
-		try {
-			Class.forName(CommonConstants.DRIVER_CLASS);
-			connection = DriverManager.getConnection(p.getProperty(CommonConstants.URL),
-					p.getProperty(CommonConstants.USERNAME), p.getProperty(CommonConstants.PASSWORD));
-		} catch (ClassNotFoundException e) {
-			LOG.log(Level.SEVERE, e.getMessage());
-		} catch (SQLException e) {
-			LOG.log(Level.SEVERE, e.getMessage());
-		}
+
+		DBConnectionUtil db = new DBConnectionUtil();
+		connection=db.getConnection();	
 	}
 
 	@Override
