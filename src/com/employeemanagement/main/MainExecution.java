@@ -28,7 +28,6 @@ public class MainExecution {
 			XSLTransformUtil.RequestTransform();
 //			get Employee Details
 			employee.getEmployeesFromXML();
-			employee.getEmployeesFromXML();
 //			insert new Employee
 			employee.addEmployee();
 			
