@@ -38,8 +38,7 @@ public class EmployeeServiceImpl extends AbstractService{
 
 	public EmployeeServiceImpl() throws XPathExpressionException, SQLException {
 
-		DBConnectionUtil db = new DBConnectionUtil();
-		connection=db.getConnection();	
+		connection=DBConnectionUtil.getConnection();	
 	}
 
 	@Override
