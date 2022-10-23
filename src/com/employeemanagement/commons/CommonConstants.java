@@ -54,22 +54,22 @@ public class CommonConstants {
 	public static final String ID = "id";
 
 	// EmployeeQuery.xml file query identification q1
-	public static final String Q1 = "q1";
+	public static final String Q1 = "empTableCreate";
 
 	// EmployeeQuery.xml file query identification q2
-	public static final String Q2 = "q2";
+	public static final String Q2 = "dropEmp";
 
 	// EmployeeQuery.xml file query identification q3
-	public static final String Q3 = "q3";
+	public static final String Q3 = "insertEmp";
 
 	// EmployeeQuery.xml file query identification q4
-	public static final String Q4 = "q4";
+	public static final String Q4 = "getEmpById";
 
 	// EmployeeQuery.xml file query identification q5
-	public static final String Q5 = "q5";
+	public static final String Q5 = "getAllEmp";
 
 	// EmployeeQuery.xml file query identification q6
-	public static final String Q6 = "q6";
+	public static final String Q6 = "deleteEmpById";
 
 	// 
 	public static final String XML_PATH_PREFIX = "//Employees/Employee";
