@@ -15,7 +15,7 @@ public class c1 {
 
 	static {
 		try {
-			p.load(c2.class.getResourceAsStream(CommonConstants.PATH_TO_CONFIG_PROPERTIES_FILE));
+			p.load(QueryUtil.class.getResourceAsStream(CommonConstants.PATH_TO_CONFIG_PROPERTIES_FILE));
 		} catch (Exception e) {
 
 		}

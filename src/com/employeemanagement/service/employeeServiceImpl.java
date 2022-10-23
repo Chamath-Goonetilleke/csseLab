@@ -4,8 +4,8 @@ package com.employeemanagement.service;
 import org.xml.sax.SAXException;
 
 import com.employeemanagement.commons.CommonConstants;
+import com.employeemanagement.commons.QueryUtil;
 import com.employeemanagement.commons.c1;
-import com.employeemanagement.commons.c2;
 import com.employeemanagement.commons.c3;
 import com.employeemanagement.model.Employee;
 
@@ -75,8 +75,8 @@ public class employeeServiceImpl extends c1 {
 	public void createEmployeeTable() throws Exception {
 		try {
 			statement = connection.createStatement();
-			statement.executeUpdate(c2.Q(CommonConstants.DROP_EMP));
-			statement.executeUpdate(c2.Q(CommonConstants.EMP_TABLE_CREATE));
+			statement.executeUpdate(QueryUtil.Q(CommonConstants.DROP_EMP));
+			statement.executeUpdate(QueryUtil.Q(CommonConstants.EMP_TABLE_CREATE));
 		}catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		}catch (SQLException e) {
@@ -86,7 +86,7 @@ public class employeeServiceImpl extends c1 {
 
 	public void addEmployee() throws Exception {
 		try {
-			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.INSERT_EMP));
+			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.INSERT_EMP));
 			connection.setAutoCommit(false);
 			for (int i = 0; i < el.size(); i++) {
 				Employee employee = el.get(i);
@@ -107,12 +107,12 @@ public class employeeServiceImpl extends c1 {
 		}
 	}
 
-	public void getEmployeeById(String eid) throws Exception {
+	public void getEmployeeById(String employeeId) throws Exception {
 
 		Employee employee = new Employee();
 		try {
-			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.GET_EMP_BY_ID));
-			preparedStatement.setString(1, eid);
+			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.GET_EMP_BY_ID));
+			preparedStatement.setString(1, employeeId);
 			ResultSet R = preparedStatement.executeQuery();
 			while (R.next()) {
 				employee.setEmployeeId(R.getString(1));
@@ -132,11 +132,11 @@ public class employeeServiceImpl extends c1 {
 		}
 	}
 
-	public void deleteEmployee(String eid) {
+	public void deleteEmployee(String employeeId) {
 
 		try {
-			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.DELETE_EMP_BY_ID));
-			preparedStatement.setString(1, eid);
+			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.DELETE_EMP_BY_ID));
+			preparedStatement.setString(1, employeeId);
 			preparedStatement.executeUpdate();
 		}catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
@@ -152,7 +152,7 @@ public class employeeServiceImpl extends c1 {
 
 		ArrayList<Employee> employeeList = new ArrayList<Employee>();
 		try {
-			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.GET_ALL_EMP));
+			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.GET_ALL_EMP));
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				Employee employee = new Employee();
