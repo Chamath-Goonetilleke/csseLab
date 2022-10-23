@@ -1,14 +1,13 @@
 package com.employeemanagement.service;
 
 import com.employeemanagement.commons.CommonConstants;
+import com.employeemanagement.commons.DBConnectionUtil;
 import com.employeemanagement.commons.QueryUtil;
 import com.employeemanagement.commons.XSLTransformUtil;
-import com.employeemanagement.config.DBConnectionUtil;
 import com.employeemanagement.model.Employee;
 
 import java.sql.Connection;
 import java.util.logging.Logger;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javax.xml.xpath.XPathExpressionException;
 
