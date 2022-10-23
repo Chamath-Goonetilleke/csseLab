@@ -6,16 +6,16 @@ public class CommonConstants {
 	public static final String PATH_TO_CONFIG_PROPERTIES_FILE = "../config/config.properties";
 
 	// Path to Employee-modified.xsl file
-	public static final String PATH_TO_EMPLOYEE_MODIFIED_XML_XSL = "src/e/Employee-modified.xsl";
+	public static final String PATH_TO_EMPLOYEE_MODIFIED_XML_XSL = "src/com/employeemanagement/config/Employee-modified.xsl";
 
 	// Path to EmployeeRequest.xml file
-	public static final String PATH_TO_EMPLOYEE_REQUEST_XML_FILE = "src/e/EmployeeRequest.xml";
+	public static final String PATH_TO_EMPLOYEE_REQUEST_XML_FILE = "src/com/employeemanagement/config/EmployeeRequest.xml";
 
 	// Path to EmployeeQuery.xml file
-	public static final String PATH_TO_EMPLOYEE_QUERY_FILE = "src/e/EmployeeQuery.xml";
+	public static final String PATH_TO_EMPLOYEE_QUERY_FILE = "src/com/employeemanagement/config/EmployeeQuery.xml";
 
 	// Path to EmployeeResponse.xml file
-	public static final String PATH_TO_EMPLOYEE_RESPONSE_XML_FILE = "src/e/EmployeeResponse.xml";
+	public static final String PATH_TO_EMPLOYEE_RESPONSE_XML_FILE = "src/com/employeemanagement/config/EmployeeResponse.xml";
 
 	// MySQL database connector driver class
 	public static final String DRIVER_CLASS = "com.mysql.jdbc.Driver";
