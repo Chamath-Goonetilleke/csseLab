@@ -14,10 +14,12 @@ public class DBConnectionUtil {
 	public static final Logger LOG = Logger.getLogger(EmployeeServiceImpl.class.getName());
 	public static final Properties p = new Properties();
 	private static Connection con;
-
+	
+	
+//	create get connection with DB
 	public static Connection getConnection(){
 		try {
-			Class.forName(CommonConstants.DRIVER_CLASS);
+			Class.forName(CommonConstants.DRIVER_CLASS); //get Driver class
 			con = DriverManager.getConnection(p.getProperty(CommonConstants.URL),
 					p.getProperty(CommonConstants.USERNAME), p.getProperty(CommonConstants.PASSWORD));
 		} catch (ClassNotFoundException e) {

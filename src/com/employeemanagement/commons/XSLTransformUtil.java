@@ -21,11 +21,14 @@ import javax.xml.xpath.XPathConstants;
 
 public class XSLTransformUtil extends c1 {
 
-    private static final ArrayList<Map<String, String>> l = new ArrayList<Map<String, String>>();
+//	create Transform List
+    private static final ArrayList<Map<String, String>> transformList = new ArrayList<Map<String, String>>();
 
-    private static Map<String, String> m = null;
+    //declare map
+    private static Map<String, String> empMap = null;
     public static final Logger LOG = Logger.getLogger(XSLTransformUtil.class.getName());
 
+//    Request Transform static method
     public static void RequestTransform() throws Exception {
         Source employeeRequest = new StreamSource(new File(CommonConstants.PATH_TO_EMPLOYEE_REQUEST_XML_FILE));
         Source source = new StreamSource(new File(CommonConstants.PATH_TO_EMPLOYEE_MODIFIED_XML_XSL));
@@ -33,6 +36,7 @@ public class XSLTransformUtil extends c1 {
         TransformerFactory.newInstance().newTransformer(source).transform(employeeRequest, result);
     }
 
+//    XML XPath static methods
     public static ArrayList<Map<String, String>> xmlXPath() throws Exception {
         Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder()
                 .parse(CommonConstants.PATH_TO_EMPLOYEE_RESPONSE_XML_FILE);
@@ -45,41 +49,41 @@ public class XSLTransformUtil extends c1 {
                 .evaluate(document, XPathConstants.STRING));
 
         for (int i = CommonConstants.ONE; i <= n; i++) {
-            m = new HashMap<String, String>();
-            m.put(CommonConstants.XPATH_EMPLOYEE_ID_KEY,
+        	empMap = new HashMap<String, String>();
+        	empMap.put(CommonConstants.XPATH_EMPLOYEE_ID_KEY,
                     (String) employeeRequest.compile(CommonConstants.XML_PATH_PREFIX + CommonConstants.LEFT_BRACKET + i
                             + CommonConstants.RIGHT_BRACKET + CommonConstants.BACKSLASH
                             + CommonConstants.XML_PATH_EMPLOYEEE_ID + CommonConstants.BACKSLASH
                             + CommonConstants.XML_TEXT_METHOD).evaluate(document, XPathConstants.STRING));
-            m.put(CommonConstants.XPATH_EMPLOYEE_NAME_KEY,
+        	empMap.put(CommonConstants.XPATH_EMPLOYEE_NAME_KEY,
                     (String) employeeRequest.compile(CommonConstants.XML_PATH_PREFIX + CommonConstants.LEFT_BRACKET + i
                             + CommonConstants.RIGHT_BRACKET + CommonConstants.BACKSLASH
                             + CommonConstants.XML_PATH_EMPLOYEE_FULL_NAME + CommonConstants.BACKSLASH
                             + CommonConstants.XML_TEXT_METHOD).evaluate(document, XPathConstants.STRING));
-            m.put(CommonConstants.XPATH_EMPLOYEE_ADDRESS_KEY,
+        	empMap.put(CommonConstants.XPATH_EMPLOYEE_ADDRESS_KEY,
                     (String) employeeRequest.compile(CommonConstants.XML_PATH_PREFIX + CommonConstants.LEFT_BRACKET + i
                             + CommonConstants.RIGHT_BRACKET + CommonConstants.BACKSLASH
                             + CommonConstants.XML_PATH_EMPLOYEE_ADDRESS + CommonConstants.BACKSLASH
                             + CommonConstants.XML_TEXT_METHOD).evaluate(document, XPathConstants.STRING));
-            m.put(CommonConstants.XPATH_FACULTY_NAME_KEY,
+        	empMap.put(CommonConstants.XPATH_FACULTY_NAME_KEY,
                     (String) employeeRequest.compile(CommonConstants.XML_PATH_PREFIX + CommonConstants.LEFT_BRACKET + i
                             + CommonConstants.RIGHT_BRACKET + CommonConstants.BACKSLASH
                             + CommonConstants.XML_PATH_FACULTY_NAME + CommonConstants.BACKSLASH
                             + CommonConstants.XML_TEXT_METHOD).evaluate(document, XPathConstants.STRING));
-            m.put(CommonConstants.XPATH_DEPARTMENT_KEY,
+        	empMap.put(CommonConstants.XPATH_DEPARTMENT_KEY,
                     (String) employeeRequest.compile(CommonConstants.XML_PATH_PREFIX + CommonConstants.LEFT_BRACKET + i
                             + CommonConstants.RIGHT_BRACKET + CommonConstants.BACKSLASH
                             + CommonConstants.XML_PATH_DEPARTMENT + CommonConstants.BACKSLASH
                             + CommonConstants.XML_TEXT_METHOD).evaluate(document, XPathConstants.STRING));
-            m.put(CommonConstants.XPATH_DESIGNATION_KEY,
+        	empMap.put(CommonConstants.XPATH_DESIGNATION_KEY,
                     (String) employeeRequest.compile(CommonConstants.XML_PATH_PREFIX + CommonConstants.LEFT_BRACKET + i
                             + CommonConstants.RIGHT_BRACKET + CommonConstants.BACKSLASH
                             + CommonConstants.XML_PATH_DESIGNATION + CommonConstants.BACKSLASH
                             + CommonConstants.XML_TEXT_METHOD).evaluate(document, XPathConstants.STRING));
-            l.add(m);
+            transformList.add(empMap);
         }
 
-        return l;
+        return transformList;
     }
 
 }

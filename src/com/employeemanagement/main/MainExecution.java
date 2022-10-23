@@ -20,13 +20,18 @@ public class MainExecution {
 
 	public static void main(String[] args) throws Exception {
 		
+//		declare Employee Service Implementation object
 		EmployeeServiceImpl employee;
+		
 		try {
 			employee = new EmployeeServiceImpl();
 			XSLTransformUtil.RequestTransform();
+//			get Employee Details
 			employee.getEmployeesFromXML();
 			employee.getEmployeesFromXML();
+//			insert new Employee
 			employee.addEmployee();
+			
 		} catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		} catch (SQLException e) {

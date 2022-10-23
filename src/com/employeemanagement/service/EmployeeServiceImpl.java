@@ -4,11 +4,7 @@ import com.employeemanagement.commons.CommonConstants;
 import com.employeemanagement.commons.DBConnectionUtil;
 import com.employeemanagement.commons.QueryUtil;
 import com.employeemanagement.commons.XSLTransformUtil;
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 56c2c4f6fde61321fbf87c70e74fd4d837c0a3ef
 import com.employeemanagement.model.Employee;
 
 import java.sql.Connection;
@@ -25,13 +21,16 @@ import java.util.Map;
 
 public class EmployeeServiceImpl extends AbstractService{
 
+//	Employee List
 	private final ArrayList<Employee> employeeList = new ArrayList<Employee>();
+//	Logger
 	public static final Logger LOG = Logger.getLogger(EmployeeServiceImpl.class.getName());
 
+//	create Connection
 	private Connection connection;
-
+//	create Statements
 	private Statement statement;
-
+//	Prepared Statement
 	private PreparedStatement preparedStatement;
 	
 	
@@ -44,8 +43,11 @@ public class EmployeeServiceImpl extends AbstractService{
 //	get Employees Details From XML
 	@Override
 	public void getEmployeesFromXML() throws Exception {
+		
 		try {
+			
 			for (Map<String, String> list: XSLTransformUtil.xmlXPath()) {
+				
 				Employee employee = new Employee();
 				employee.setEmployeeId(list.get(CommonConstants.XPATH_EMPLOYEE_ID_KEY));
 				employee.setFullName(list.get(CommonConstants.XPATH_EMPLOYEE_NAME_KEY));
@@ -55,8 +57,8 @@ public class EmployeeServiceImpl extends AbstractService{
 				employee.setDesignation(list.get(CommonConstants.XPATH_DESIGNATION_KEY));
 
 				employeeList.add(employee);
-//				System.out.println(employee.toString() + "\n");
 				LOG.info(employee.toString() + "\n");
+				
 			}
 		} catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
@@ -65,12 +67,15 @@ public class EmployeeServiceImpl extends AbstractService{
 		}
 	}
 
+//	create Employee Table
 	@Override
 	public void createEmployeeTable() throws Exception {
 		try {
+//			create Statements
 			statement = connection.createStatement();
 			statement.executeUpdate(QueryUtil.Q(CommonConstants.DROP_EMP));
 			statement.executeUpdate(QueryUtil.Q(CommonConstants.EMP_TABLE_CREATE));
+			
 		} catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		} catch (SQLException e) {
@@ -79,6 +84,7 @@ public class EmployeeServiceImpl extends AbstractService{
 		
 	}
 
+//	Add new Employees
 	@Override
 	public void addEmployee() throws Exception {
 		try {
@@ -103,6 +109,7 @@ public class EmployeeServiceImpl extends AbstractService{
 		
 	}
 
+//	get Employee Details By Id
 	@Override
 	public void getEmployeeById(String employeeId) throws Exception {
 		Employee employee = new Employee();
@@ -129,6 +136,7 @@ public class EmployeeServiceImpl extends AbstractService{
 		
 	}
 
+//	delete Specific Employee
 	@Override
 	public void deleteEmployee(String employeeId) {
 		try {
@@ -145,6 +153,7 @@ public class EmployeeServiceImpl extends AbstractService{
 		
 	}
 
+//	Display all Employees
 	@Override
 	public void displayEmployee() throws Exception {
 		ArrayList<Employee> employeeList = new ArrayList<Employee>();
@@ -152,6 +161,7 @@ public class EmployeeServiceImpl extends AbstractService{
 			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.GET_ALL_EMP));
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
+//				Create Employee Object
 				Employee employee = new Employee();
 				employee.setEmployeeId(resultSet.getString(1));
 				employee.setFullName(resultSet.getString(2));
@@ -170,6 +180,7 @@ public class EmployeeServiceImpl extends AbstractService{
 		
 	}
 
+//	Display Employee Details
 	@Override
 	public void employeeOutput(ArrayList<Employee> l) {
 
