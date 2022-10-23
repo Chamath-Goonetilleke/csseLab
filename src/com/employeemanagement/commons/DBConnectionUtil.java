@@ -1,4 +1,4 @@
-package com.employeemanagement.config;
+package com.employeemanagement.commons;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
