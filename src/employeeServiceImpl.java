@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class a extends c1 {
+public class employeeServiceImpl extends c1 {
 
 	private final ArrayList<Employee> el = new ArrayList<Employee>();
 
@@ -28,7 +28,7 @@ public class a extends c1 {
 
 	private PreparedStatement preparedStatement;
 
-	public a() {
+	public employeeServiceImpl() {
 		try {
 			Class.forName(CommonConstants.DRIVER_CLASS);
 			connection = DriverManager.getConnection(p.getProperty(CommonConstants.URL), p.getProperty(CommonConstants.USERNAME),
