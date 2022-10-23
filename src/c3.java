@@ -2,6 +2,7 @@
 import javax.xml.xpath.XPathFactory;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 import java.io.File;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -16,12 +17,14 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
 
 public class c3 extends c1 {
 
 	private static final ArrayList<Map<String, String>> l = new ArrayList<Map<String, String>>();
 
 	private static Map<String, String> m = null;
+	//public static final Logger LOG = Logger.getLogger(AbstractService.class.getName());
 
 	public static void RequestTransform() throws Exception {
 		Source employeeRequest = new StreamSource(new File(CommonConstants.PATH_TO_EMPLOYEE_REQUEST_XML_FILE));
