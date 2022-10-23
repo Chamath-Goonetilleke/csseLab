@@ -50,7 +50,7 @@ public class EmployeeServiceImpl extends AbstractService{
 	public void getEmployeesFromXML() throws Exception {
 		try {
 			int s = c3.xmlXPath().size();
-			for (int i = 0; i < s; i++) {
+			for (int i = CommonConstants.ZERO; i < s; i++) {
 				Map<String, String> l = c3.xmlXPath().get(i);
 				Employee employee = new Employee();
 				employee.setEmployeeId(l.get(CommonConstants.XPATH_EMPLOYEE_ID_KEY));
