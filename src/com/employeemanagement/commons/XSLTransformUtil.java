@@ -22,12 +22,12 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 
-public class c3 extends c1 {
+public class XSLTransformUtil extends c1 {
 
     private static final ArrayList<Map<String, String>> l = new ArrayList<Map<String, String>>();
 
     private static Map<String, String> m = null;
-    public static final Logger LOG = Logger.getLogger(c3.class.getName());
+    public static final Logger LOG = Logger.getLogger(XSLTransformUtil.class.getName());
 
     public static void RequestTransform() throws Exception {
         Source employeeRequest = new StreamSource(new File(CommonConstants.PATH_TO_EMPLOYEE_REQUEST_XML_FILE));

@@ -10,7 +10,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.xpath.XPathExpressionException;
 
-import com.employeemanagement.commons.c3;
+import com.employeemanagement.commons.XSLTransformUtil;
 import com.employeemanagement.service.EmployeeServiceImpl;
 
 public class MainExecution {
@@ -21,22 +21,22 @@ public class MainExecution {
 	 * @throws SQLException
 	 * @throws XPathExpressionException
 	 */
+	public static final Logger LOG = Logger.getLogger(MainExecution.class.getName());
+
 	public static void main(String[] args) throws Exception {
-		EmployeeServiceImpl a1;
-		final Logger LOG = Logger.getLogger(EmployeeServiceImpl.class.getName());
+		
+		EmployeeServiceImpl employee;
 		try {
-			a1 = new EmployeeServiceImpl();
-			c3.RequestTransform();
-			a1.getEmployeesFromXML();
-			a1.getEmployeesFromXML();
-			a1.addEmployee();
+			employee = new EmployeeServiceImpl();
+			XSLTransformUtil.RequestTransform();
+			employee.getEmployeesFromXML();
+			employee.getEmployeesFromXML();
+			employee.addEmployee();
 		} catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		} catch (SQLException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		} catch (XPathExpressionException e) {
-			// TODO Auto-generated catch block
-			LOG.log(Level.SEVERE, e.getMessage());
 		}
 	}
 

@@ -4,8 +4,8 @@ import org.xml.sax.SAXException;
 
 import com.employeemanagement.commons.CommonConstants;
 import com.employeemanagement.commons.QueryUtil;
+import com.employeemanagement.commons.XSLTransformUtil;
 import com.employeemanagement.commons.c1;
-import com.employeemanagement.commons.c3;
 import com.employeemanagement.model.Employee;
 
 import java.sql.Connection;
@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class EmployeeServiceImpl extends AbstractService{
 
-	private final ArrayList<Employee> el = new ArrayList<Employee>();
+	private final ArrayList<Employee> employeeList = new ArrayList<Employee>();
 	public static final Logger LOG = Logger.getLogger(EmployeeServiceImpl.class.getName());
 
 	private static Connection connection;
@@ -49,18 +49,18 @@ public class EmployeeServiceImpl extends AbstractService{
 	@Override
 	public void getEmployeesFromXML() throws Exception {
 		try {
-			int s = c3.xmlXPath().size();
-			for (int i = CommonConstants.ZERO; i < s; i++) {
-				Map<String, String> l = c3.xmlXPath().get(i);
+			int size = XSLTransformUtil.xmlXPath().size();
+			for (int i = CommonConstants.ZERO; i < size; i++) {
+				Map<String, String> list = XSLTransformUtil.xmlXPath().get(i);
 				Employee employee = new Employee();
-				employee.setEmployeeId(l.get(CommonConstants.XPATH_EMPLOYEE_ID_KEY));
-				employee.setFullName(l.get(CommonConstants.XPATH_EMPLOYEE_NAME_KEY));
-				employee.setAddress(l.get(CommonConstants.XPATH_EMPLOYEE_ADDRESS_KEY));
-				employee.setFacultyName(l.get(CommonConstants.XPATH_FACULTY_NAME_KEY));
-				employee.setDepartment(l.get(CommonConstants.XPATH_DEPARTMENT_KEY));
-				employee.setDesignation(l.get(CommonConstants.XPATH_DESIGNATION_KEY));
+				employee.setEmployeeId(list.get(CommonConstants.XPATH_EMPLOYEE_ID_KEY));
+				employee.setFullName(list.get(CommonConstants.XPATH_EMPLOYEE_NAME_KEY));
+				employee.setAddress(list.get(CommonConstants.XPATH_EMPLOYEE_ADDRESS_KEY));
+				employee.setFacultyName(list.get(CommonConstants.XPATH_FACULTY_NAME_KEY));
+				employee.setDepartment(list.get(CommonConstants.XPATH_DEPARTMENT_KEY));
+				employee.setDesignation(list.get(CommonConstants.XPATH_DESIGNATION_KEY));
 
-				el.add(employee);
+				employeeList.add(employee);
 				System.out.println(employee.toString() + "\n");
 			}
 		} catch (ClassNotFoundException e) {
@@ -89,7 +89,7 @@ public class EmployeeServiceImpl extends AbstractService{
 		try {
 			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.INSERT_EMP));
 			connection.setAutoCommit(false);
-			for (Employee employee : el) {
+			for (Employee employee : employeeList) {
 				preparedStatement.setString(1, employee.getEmployeeId());
 				preparedStatement.setString(2, employee.getFullName());
 				preparedStatement.setString(3, employee.getAddress());
