@@ -14,6 +14,6 @@ public abstract class AbstractService extends c1 {
 	abstract void getEmployeeById(String employeeId) throws Exception;
 	abstract void deleteEmployee(String employeeId);
 	abstract void displayEmployee() throws Exception;
-	abstract void employeeOutput(ArrayList<Employee> l);
+	abstract void employeeOutput(ArrayList<Employee> employeeList);
 
 }

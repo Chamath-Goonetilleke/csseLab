@@ -9,7 +9,7 @@ import org.w3c.dom.Element;
 
 public class QueryUtil extends c1 {
 
-	public static String Q(String id) throws Exception {
+	public static String quary(String id) throws Exception {
 		NodeList nodeList;
 		Element element = null;
 		nodeList = DocumentBuilderFactory.newInstance().newDocumentBuilder()
