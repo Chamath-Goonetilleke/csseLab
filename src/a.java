@@ -102,12 +102,12 @@ public class a extends c1 {
 			}
 			ArrayList<Employee> l = new ArrayList<Employee>();
 			l.add(employee);
-			eMPLOYEEoUTPUT(l);
+			employeeOutput(l);
 		} catch (Exception ex) {
 		}
 	}
 
-	public void EMPLOYEEDELETE(String eid) {
+	public void deleteEmployee(String eid) {
 
 		try {
 			ps = c.prepareStatement(c2.Q("q6"));
@@ -136,10 +136,10 @@ public class a extends c1 {
 			}
 		} catch (Exception e) {
 		}
-		eMPLOYEEoUTPUT(l);
+		employeeOutput(l);
 	}
 	
-	public void eMPLOYEEoUTPUT(ArrayList<Employee> l){
+	public void employeeOutput(ArrayList<Employee> l){
 		
 		System.out.println("Employee ID" + "\t\t" + "Full Name" + "\t\t" + "Address" + "\t\t" + "Faculty Name" + "\t\t"
 				+ "Department" + "\t\t" + "Designation" + "\n");
