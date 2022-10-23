@@ -7,7 +7,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Element;
 
-public class QueryUtil extends c1 {
+public class QueryUtil extends CommonUtil {
 
 	public static String quary(String id) throws Exception {
 		NodeList nodeList;

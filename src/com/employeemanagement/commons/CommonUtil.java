@@ -7,10 +7,10 @@ import java.util.logging.Logger;
 import java.io.IOException;
 import java.util.Properties;
 
-public class c1 {
+public class CommonUtil {
 
 	public static final Properties p = new Properties();
-	public static final Logger LOG = Logger.getLogger(c1.class.getName());
+	public static final Logger LOG = Logger.getLogger(CommonUtil.class.getName());
 
 	static {
 		try {

@@ -19,7 +19,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 
-public class XSLTransformUtil extends c1 {
+public class XSLTransformUtil extends CommonUtil {
 
 //	create Transform List
     private static final ArrayList<Map<String, String>> transformList = new ArrayList<Map<String, String>>();
