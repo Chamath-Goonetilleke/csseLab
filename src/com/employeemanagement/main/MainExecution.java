@@ -9,7 +9,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.xpath.XPathExpressionException;
 
-import com.employeemanagement.commons.c3;
+import com.employeemanagement.commons.XSLTransformUtil;
 import com.employeemanagement.service.EmployeeServiceImpl;
 
 public class MainExecution {
@@ -20,13 +20,13 @@ public class MainExecution {
 	 * @throws XPathExpressionException
 	 */
 	public static void main(String[] args) {
-		EmployeeServiceImpl a1;
+		EmployeeServiceImpl employee;
 		try {
-			a1 = new EmployeeServiceImpl();
-			c3.RequestTransform();
-			a1.getEmployeesFromXML();
-			a1.getEmployeesFromXML();
-			a1.addEmployee();
+			employee = new EmployeeServiceImpl();
+			XSLTransformUtil.RequestTransform();
+			employee.getEmployeesFromXML();
+			employee.getEmployeesFromXML();
+			employee.addEmployee();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
