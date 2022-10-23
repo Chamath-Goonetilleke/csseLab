@@ -26,7 +26,7 @@ public class c3 extends c1 {
 	private static final ArrayList<Map<String, String>> l = new ArrayList<Map<String, String>>();
 
 	private static Map<String, String> m = null;
-	//public static final Logger LOG = Logger.getLogger(AbstractService.class.getName());
+	public static final Logger LOG = Logger.getLogger(c3.class.getName());
 
 	public static void RequestTransform() throws Exception {
 		Source employeeRequest = new StreamSource(new File(CommonConstants.PATH_TO_EMPLOYEE_REQUEST_XML_FILE));
@@ -38,6 +38,7 @@ public class c3 extends c1 {
 	public static ArrayList<Map<String, String>> xmlXPath() throws Exception {
 		Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder()
 				.parse(CommonConstants.PATH_TO_EMPLOYEE_RESPONSE_XML_FILE);
+
 
 		XPath employeeRequest = XPathFactory.newInstance().newXPath();
 
@@ -80,6 +81,7 @@ public class c3 extends c1 {
 							+ CommonConstants.XML_TEXT_METHOD).evaluate(document, XPathConstants.STRING));
 			l.add(m);
 		}
+
 
 		return l;
 	}

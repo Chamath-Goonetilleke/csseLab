@@ -68,15 +68,15 @@ public class employeeServiceImpl extends c1 {
 	public void createEmployeeTable() {
 		try {
 			statement = connection.createStatement();
-			statement.executeUpdate(c2.Q(CommonConstants.Q2));
-			statement.executeUpdate(c2.Q(CommonConstants.Q1));
+			statement.executeUpdate(c2.Q(CommonConstants.DROP_EMP));
+			statement.executeUpdate(c2.Q(CommonConstants.EMP_TABLE_CREATE));
 		} catch (Exception e) {
 		}
 	}
 
 	public void addEmployee() {
 		try {
-			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.Q3));
+			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.INSERT_EMP));
 			connection.setAutoCommit(false);
 			for (int i = 0; i < el.size(); i++) {
 				Employee employee = el.get(i);
@@ -98,7 +98,7 @@ public class employeeServiceImpl extends c1 {
 
 		Employee employee = new Employee();
 		try {
-			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.Q4));
+			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.GET_EMP_BY_ID));
 			preparedStatement.setString(1, eid);
 			ResultSet R = preparedStatement.executeQuery();
 			while (R.next()) {
@@ -119,7 +119,7 @@ public class employeeServiceImpl extends c1 {
 	public void deleteEmployee(String eid) {
 
 		try {
-			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.Q6));
+			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.DELETE_EMP_BY_ID));
 			preparedStatement.setString(1, eid);
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {
@@ -131,7 +131,7 @@ public class employeeServiceImpl extends c1 {
 
 		ArrayList<Employee> employeeList = new ArrayList<Employee>();
 		try {
-			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.Q5));
+			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.GET_ALL_EMP));
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				Employee employee = new Employee();
