@@ -14,7 +14,7 @@ public class DBConnectionUtil {
 	private static DBConnectionUtil dbIsntance;
 	
 	public static final Logger LOG = Logger.getLogger(EmployeeServiceImpl.class.getName());
-	public static final Properties p = new Properties();
+	public static final Properties property = new Properties();
 	private static Connection con;
 	public DBConnectionUtil() {
 		
@@ -33,8 +33,8 @@ public class DBConnectionUtil {
 		if(con == null) {
 			try {
 				Class.forName(CommonConstants.DRIVER_CLASS); //get Driver class
-				con = DriverManager.getConnection(p.getProperty(CommonConstants.URL),
-						p.getProperty(CommonConstants.USERNAME), p.getProperty(CommonConstants.PASSWORD));
+				con = DriverManager.getConnection(property.getProperty(CommonConstants.URL),
+						property.getProperty(CommonConstants.USERNAME), property.getProperty(CommonConstants.PASSWORD));
 			} catch (ClassNotFoundException e) {
 				LOG.log(Level.SEVERE, e.getMessage());
 			} catch (SQLException e) {
