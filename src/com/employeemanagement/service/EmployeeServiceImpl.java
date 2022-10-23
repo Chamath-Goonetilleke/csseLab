@@ -24,10 +24,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class employeeServiceImpl extends c1 {
+public class EmployeeServiceImpl extends c1 implements EmployeeService{
 
 	private final ArrayList<Employee> el = new ArrayList<Employee>();
-	public static final Logger LOG = Logger.getLogger(employeeServiceImpl.class.getName());
+	public static final Logger LOG = Logger.getLogger(EmployeeServiceImpl.class.getName());
 
 	private static Connection connection;
 
@@ -35,7 +35,7 @@ public class employeeServiceImpl extends c1 {
 
 	private PreparedStatement preparedStatement;
 
-	public employeeServiceImpl() throws XPathExpressionException, SQLException {
+	public EmployeeServiceImpl() throws XPathExpressionException, SQLException {
 		try {
 			Class.forName(CommonConstants.DRIVER_CLASS);
 			connection = DriverManager.getConnection(p.getProperty(CommonConstants.URL), p.getProperty(CommonConstants.USERNAME),
@@ -47,8 +47,8 @@ public class employeeServiceImpl extends c1 {
 		}
 	}
 
+	@Override
 	public void getEmployeesFromXML() throws Exception {
-
 		try {
 			int s = c3.xmlXPath().size();
 			for (int i = 0; i < s; i++) {
@@ -60,7 +60,7 @@ public class employeeServiceImpl extends c1 {
 				employee.setFacultyName(l.get(CommonConstants.XPATH_FACULTY_NAME_KEY));
 				employee.setDepartment(l.get(CommonConstants.XPATH_DEPARTMENT_KEY));
 				employee.setDesignation(l.get(CommonConstants.XPATH_DESIGNATION_KEY));
-				;
+
 				el.add(employee);
 
 				System.out.println(employee.toString() + "\n");
@@ -70,8 +70,10 @@ public class employeeServiceImpl extends c1 {
 		}catch (SQLException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		}
+		
 	}
 
+	@Override
 	public void createEmployeeTable() throws Exception {
 		try {
 			statement = connection.createStatement();
@@ -82,8 +84,10 @@ public class employeeServiceImpl extends c1 {
 		}catch (SQLException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		}
+		
 	}
 
+	@Override
 	public void addEmployee() throws Exception {
 		try {
 			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.INSERT_EMP));
@@ -105,10 +109,11 @@ public class employeeServiceImpl extends c1 {
 		}catch (SQLException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		}
+		
 	}
 
+	@Override
 	public void getEmployeeById(String employeeId) throws Exception {
-
 		Employee employee = new Employee();
 		try {
 			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.GET_EMP_BY_ID));
@@ -130,10 +135,11 @@ public class employeeServiceImpl extends c1 {
 		}catch (SQLException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		}
+		
 	}
 
+	@Override
 	public void deleteEmployee(String employeeId) {
-
 		try {
 			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.DELETE_EMP_BY_ID));
 			preparedStatement.setString(1, employeeId);
@@ -146,10 +152,11 @@ public class employeeServiceImpl extends c1 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 
+	@Override
 	public void displayEmployee() throws Exception {
-
 		ArrayList<Employee> employeeList = new ArrayList<Employee>();
 		try {
 			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.GET_ALL_EMP));
@@ -170,10 +177,11 @@ public class employeeServiceImpl extends c1 {
 			LOG.log(Level.SEVERE, e.getMessage());
 		}
 		employeeOutput(employeeList);
+		
 	}
 
+	@Override
 	public void employeeOutput(ArrayList<Employee> l) {
-
 		System.out.println("Employee ID" + "\t\t" + "Full Name" + "\t\t" + "Address" + "\t\t" + "Faculty Name" + "\t\t"
 				+ "Department" + "\t\t" + "Designation" + "\n");
 		System.out.println(
@@ -185,6 +193,8 @@ public class employeeServiceImpl extends c1 {
 			System.out.println(
 					"----------------------------------------------------------------------------------------------------------------");
 		}
-
+		
 	}
+
+	
 }
