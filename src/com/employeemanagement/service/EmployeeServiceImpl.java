@@ -1,19 +1,15 @@
 package com.employeemanagement.service;
 
 import com.employeemanagement.commons.CommonConstants;
+import com.employeemanagement.commons.DBConnectionUtil;
 import com.employeemanagement.commons.QueryUtil;
 import com.employeemanagement.commons.XSLTransformUtil;
-<<<<<<< HEAD
-import com.employeemanagement.commons.c1;
-=======
-import com.employeemanagement.config.DBConnectionUtil;
->>>>>>> b32f397edb12caaa05bb76d242fd9581c757544e
+
+
 import com.employeemanagement.model.Employee;
 
 import java.sql.Connection;
 import java.util.logging.Logger;
-import java.sql.DriverManager;
-import javax.xml.parsers.ParserConfigurationException;
 import java.sql.PreparedStatement;
 import javax.xml.xpath.XPathExpressionException;
 
@@ -21,7 +17,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.sql.Statement;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -30,17 +25,20 @@ public class EmployeeServiceImpl extends AbstractService{
 	private final ArrayList<Employee> employeeList = new ArrayList<Employee>();
 	public static final Logger LOG = Logger.getLogger(EmployeeServiceImpl.class.getName());
 
-	private static Connection connection;
+	private Connection connection;
 
-	private static Statement statement;
+	private Statement statement;
 
 	private PreparedStatement preparedStatement;
-
+	
+	
+//	get DB connection from DBUril class
 	public EmployeeServiceImpl() throws XPathExpressionException, SQLException {
 
-		connection=DBConnectionUtil.getConnection();	
+		connection = DBConnectionUtil.getConnection();	
 	}
 
+//	get Employees Details From XML
 	@Override
 	public void getEmployeesFromXML() throws Exception {
 		try {
@@ -54,7 +52,8 @@ public class EmployeeServiceImpl extends AbstractService{
 				employee.setDesignation(list.get(CommonConstants.XPATH_DESIGNATION_KEY));
 
 				employeeList.add(employee);
-				System.out.println(employee.toString() + "\n");
+//				System.out.println(employee.toString() + "\n");
+				LOG.info(employee.toString() + "\n");
 			}
 		} catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
@@ -170,16 +169,18 @@ public class EmployeeServiceImpl extends AbstractService{
 
 	@Override
 	public void employeeOutput(ArrayList<Employee> l) {
-		System.out.println("Employee ID" + "\t\t" + "Full Name" + "\t\t" + "Address" + "\t\t" + "Faculty Name" + "\t\t"
+
+		LOG.info("Employee ID" + "\t\t" + "Full Name" + "\t\t" + "Address" + "\t\t" + "Faculty Name" + "\t\t"
 				+ "Department" + "\t\t" + "Designation" + "\n");
-		System.out.println(
-				"================================================================================================================");
+		
+		LOG.info("================================================================================================================");
 		for (Employee employee : l) {
-			System.out.println(employee.getEmployeeId() + "\t" + employee.getFullName() + "\t\t" + employee.getAddress()
-					+ "\t" + employee.getFacultyName() + "\t" + employee.getDepartment() + "\t"
-					+ employee.getDesignation() + "\n");
-			System.out.println(
-					"----------------------------------------------------------------------------------------------------------------");
+			
+			LOG.info(employee.getEmployeeId() + "\t" + employee.getFullName() + "\t\t" + employee.getAddress()
+			+ "\t" + employee.getFacultyName() + "\t" + employee.getDepartment() + "\t"
+			+ employee.getDesignation() + "\n");
+			LOG.info("----------------------------------------------------------------------------------------------------------------");
+			
 		}
 	}
 
