@@ -13,7 +13,7 @@ public class d {
 
 		a a1 = new a();
 		try {
-			c3.rEQUESTtRANSFORM();
+			c3.RequestTransform();
 			a1.a2();
 			a1.a3();
 			a1.a4();
