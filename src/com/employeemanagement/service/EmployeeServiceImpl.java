@@ -32,12 +32,12 @@ public class EmployeeServiceImpl extends AbstractService{
 	private Statement statement;
 //	Prepared Statement
 	private PreparedStatement preparedStatement;
-	
-	
+
+
 //	get DB connection from DBUril class
 	public EmployeeServiceImpl() throws XPathExpressionException, SQLException {
 
-		connection = DBConnectionUtil.getConnection();	
+		connection = DBConnectionUtil.getConnection();
 	}
 
 //	get Employees Details From XML
@@ -186,15 +186,15 @@ public class EmployeeServiceImpl extends AbstractService{
 
 		LOG.info("Employee ID" + "\t\t" + "Full Name" + "\t\t" + "Address" + "\t\t" + "Faculty Name" + "\t\t"
 				+ "Department" + "\t\t" + "Designation" + "\n");
-		
+
 		LOG.info("================================================================================================================");
 		for (Employee employee : l) {
-			
+
 			LOG.info(employee.getEmployeeId() + "\t" + employee.getFullName() + "\t\t" + employee.getAddress()
 			+ "\t" + employee.getFacultyName() + "\t" + employee.getDepartment() + "\t"
 			+ employee.getDesignation() + "\n");
 			LOG.info("----------------------------------------------------------------------------------------------------------------");
-			
+
 		}
 	}
 
