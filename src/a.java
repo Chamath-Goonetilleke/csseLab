@@ -1,6 +1,8 @@
 
-
 import org.xml.sax.SAXException;
+
+import com.employeemanagement.commons.CommonConstants;
+
 import java.sql.Connection;
 import java.util.logging.Logger;
 import java.sql.DriverManager;
@@ -26,32 +28,31 @@ public class a extends c1 {
 
 	private PreparedStatement ps;
 
-	
-
 	public a() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			c = DriverManager.getConnection(p.getProperty("url"), p.getProperty("username"),
-					p.getProperty("password"));
+			Class.forName(CommonConstants.DRIVER_CLASS);
+			c = DriverManager.getConnection(p.getProperty(CommonConstants.URL), p.getProperty(CommonConstants.USERNAME),
+					p.getProperty(CommonConstants.PASSWORD));
 		} catch (Exception e) {
-		} 
+		}
 	}
 
 	public void a2() {
 
 		try {
-			int s = c3.XMLXPATHS().size();
+			int s = c3.xmlXPath().size();
 			for (int i = 0; i < s; i++) {
-				Map<String, String> l = c3.XMLXPATHS().get(i);
+				Map<String, String> l = c3.xmlXPath().get(i);
 				Employee employee = new Employee();
-				employee.setEmployeeId(l.get("XpathEmployeeIDKey"));
-				employee.setFullName(l.get("XpathEmployeeNameKey"));
-				employee.setAddress(l.get("XpathEmployeeAddressKey"));
-				employee.setFacultyName(l.get("XpathFacultyNameKey"));
-				employee.setDepartment(l.get("XpathDepartmentKey"));
-				employee.setDesignation(l.get("XpathDesignationKey"));;
+				employee.setEmployeeId(l.get(CommonConstants.XPATH_EMPLOYEE_ID_KEY));
+				employee.setFullName(l.get(CommonConstants.XPATH_EMPLOYEE_NAME_KEY));
+				employee.setAddress(l.get(CommonConstants.XPATH_EMPLOYEE_ADDRESS_KEY));
+				employee.setFacultyName(l.get(CommonConstants.XPATH_FACULTY_NAME_KEY));
+				employee.setDepartment(l.get(CommonConstants.XPATH_DEPARTMENT_KEY));
+				employee.setDesignation(l.get(CommonConstants.XPATH_DESIGNATION_KEY));
+				;
 				el.add(employee);
-				
+
 				System.out.println(employee.toString() + "\n");
 			}
 		} catch (Exception e) {
@@ -61,17 +62,17 @@ public class a extends c1 {
 	public void a3() {
 		try {
 			s = c.createStatement();
-			s.executeUpdate(c2.Q("q2"));
-			s.executeUpdate(c2.Q("q1"));
+			s.executeUpdate(c2.Q(CommonConstants.Q2));
+			s.executeUpdate(c2.Q(CommonConstants.Q1));
 		} catch (Exception e) {
 		}
 	}
 
 	public void a4() {
 		try {
-			ps = c.prepareStatement(c2.Q("q3"));
+			ps = c.prepareStatement(c2.Q(CommonConstants.Q3));
 			c.setAutoCommit(false);
-			for(int i = 0; i < el.size(); i++){
+			for (int i = 0; i < el.size(); i++) {
 				Employee employee = el.get(i);
 				ps.setString(1, employee.getEmployeeId());
 				ps.setString(2, employee.getFullName());
@@ -91,7 +92,7 @@ public class a extends c1 {
 
 		Employee employee = new Employee();
 		try {
-			ps = c.prepareStatement(c2.Q("q4"));
+			ps = c.prepareStatement(c2.Q(CommonConstants.Q4));
 			ps.setString(1, eid);
 			ResultSet R = ps.executeQuery();
 			while (R.next()) {
@@ -112,7 +113,7 @@ public class a extends c1 {
 	public void deleteEmployee(String eid) {
 
 		try {
-			ps = c.prepareStatement(c2.Q("q6"));
+			ps = c.prepareStatement(c2.Q(CommonConstants.Q6));
 			ps.setString(1, eid);
 			ps.executeUpdate();
 		} catch (Exception e) {
@@ -124,7 +125,7 @@ public class a extends c1 {
 
 		ArrayList<Employee> l = new ArrayList<Employee>();
 		try {
-			ps = c.prepareStatement(c2.Q("q5"));
+			ps = c.prepareStatement(c2.Q(CommonConstants.Q5));
 			ResultSet r = ps.executeQuery();
 			while (r.next()) {
 				Employee employee = new Employee();
@@ -140,21 +141,20 @@ public class a extends c1 {
 		}
 		employeeOutput(l);
 	}
-	
-	public void employeeOutput(ArrayList<Employee> l){
-		
+
+	public void employeeOutput(ArrayList<Employee> l) {
+
 		System.out.println("Employee ID" + "\t\t" + "Full Name" + "\t\t" + "Address" + "\t\t" + "Faculty Name" + "\t\t"
 				+ "Department" + "\t\t" + "Designation" + "\n");
-		System.out
-				.println("================================================================================================================");
-		for(int i = 0; i < l.size(); i++){
+		System.out.println(
+				"================================================================================================================");
+		for (int i = 0; i < l.size(); i++) {
 			Employee e = l.get(i);
-			System.out.println(e.getEmployeeId() + "\t" + e.getFullName() + "\t\t"
-					+ e.getAddress()+ "\t" + e.getFacultyName() + "\t" + e.getDepartment() + "\t"
-					+ e.getDesignation() + "\n");
-			System.out
-			.println("----------------------------------------------------------------------------------------------------------------");
+			System.out.println(e.getEmployeeId() + "\t" + e.getFullName() + "\t\t" + e.getAddress() + "\t"
+					+ e.getFacultyName() + "\t" + e.getDepartment() + "\t" + e.getDesignation() + "\n");
+			System.out.println(
+					"----------------------------------------------------------------------------------------------------------------");
 		}
-		
+
 	}
 }
