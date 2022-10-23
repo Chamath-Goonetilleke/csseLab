@@ -71,42 +71,47 @@ public class CommonConstants {
 	// EmployeeQuery.xml file query identification DELETE_EMP_BY_ID
 	public static final String DELETE_EMP_BY_ID = "deleteEmpById";
 
-	// 
+	// EmployeeQuery.xml file query identification XML_PATH_PREFIX
 	public static final String XML_PATH_PREFIX = "//Employees/Employee";
-
+	// EmployeeQuery.xml file query identification XML_PATH_EMPLOYEEE_ID
 	public static final String XML_PATH_EMPLOYEEE_ID = "EmployeeID";
-
+	// EmployeeQuery.xml file query identification XML_PATH_EMPLOYEE_FULL_NAME
 	public static final String XML_PATH_EMPLOYEE_FULL_NAME = "EmployeeFullName";
-
+	// EmployeeQuery.xml file query identification XML_PATH_EMPLOYEE_ADDRESS
 	public static final String XML_PATH_EMPLOYEE_ADDRESS = "EmployeeFullAddress";
-
+	// EmployeeQuery.xml file query identification XML_PATH_FACULTY_NAME
 	public static final String XML_PATH_FACULTY_NAME = "FacultyName";
-
+	// EmployeeQuery.xml file query identification XML_PATH_DEPARTMENT
 	public static final String XML_PATH_DEPARTMENT = "Department";
-
+	// EmployeeQuery.xml file query identification XML_PATH_DESIGNATION
 	public static final String XML_PATH_DESIGNATION = "Designation";
-
+	// EmployeeQuery.xml file query identification XML_TEXT_METHOD
 	public static final String XML_TEXT_METHOD = "text()";
-
+	// EmployeeQuery.xml file query identification BACKSLASH
 	public static final String BACKSLASH = "/";
-
+	// EmployeeQuery.xml file query identification LEFT_BRACKET
 	public static final String LEFT_BRACKET = "[";
-
+	// EmployeeQuery.xml file query identification RIGHT_BRACKET
 	public static final String RIGHT_BRACKET = "]";
-
+	// EmployeeQuery.xml file query identification LEFT_PARANTHESIS
 	public static final String LEFT_PARANTHESIS = "(";
-
+	// EmployeeQuery.xml file query identification RIGHT_PARANTHESIS
 	public static final String RIGHT_PARANTHESIS = ")";
-
+	// EmployeeQuery.xml file query identification COUNT_METHOD_NAME
 	public static final String COUNT_METHOD_NAME = "count";
-	
+	// EmployeeQuery.xml file query identification ZERO
 	public static final int ZERO = 0;
-	
+	// EmployeeQuery.xml file query identification ONE
 	public static final int ONE = 1;
+	// EmployeeQuery.xml file query identification TWO
 	public static final int TWO = 2;
+	// EmployeeQuery.xml file query identification THREE
 	public static final int THREE = 3;
+	// EmployeeQuery.xml file query identification FOUR
 	public static final int FOUR = 4;
+	// EmployeeQuery.xml file query identification FIVE
 	public static final int FIVE = 5;
+	// EmployeeQuery.xml file query identification SIX
 	public static final int SIX = 6;
 
 }
