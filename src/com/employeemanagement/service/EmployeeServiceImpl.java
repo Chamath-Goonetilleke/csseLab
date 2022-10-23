@@ -37,7 +37,7 @@ public class EmployeeServiceImpl extends AbstractService{
 //	get DB connection from DBUril class
 	public EmployeeServiceImpl() throws XPathExpressionException, SQLException {
 
-		connection = DBConnectionUtil.getConnection();
+		connection = DBConnectionUtil.getInstance().getConnection();
 	}
 
 //	get Employees Details From XML

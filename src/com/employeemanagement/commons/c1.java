@@ -9,12 +9,14 @@ import java.util.Properties;
 
 public class c1 {
 
-	public static final Properties p = new Properties();
+	//create Properties
+	public static final Properties property = new Properties();
+	//initialize Logger
 	public static final Logger LOG = Logger.getLogger(c1.class.getName());
 
 	static {
 		try {
-			p.load(QueryUtil.class.getResourceAsStream(CommonConstants.PATH_TO_CONFIG_PROPERTIES_FILE));
+			property.load(QueryUtil.class.getResourceAsStream(CommonConstants.PATH_TO_CONFIG_PROPERTIES_FILE));
 		}catch (NumberFormatException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		}
