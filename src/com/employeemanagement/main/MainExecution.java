@@ -1,5 +1,6 @@
 package com.employeemanagement.main;
 
+import java.sql.SQLException;
 
 import java.sql.SQLException;
 
@@ -15,23 +16,21 @@ public class MainExecution {
 
 	/**
 	 * @param args
-	 * @throws SQLException 
-	 * @throws XPathExpressionException 
+	 * @throws SQLException
+	 * @throws XPathExpressionException
 	 */
-	public static void main(String[] args) throws XPathExpressionException, SQLException {
-
-		EmployeeServiceImpl a1 = new EmployeeServiceImpl();
+	public static void main(String[] args) {
+		EmployeeServiceImpl a1;
 		try {
+			a1 = new EmployeeServiceImpl();
 			c3.RequestTransform();
 			a1.getEmployeesFromXML();
 			a1.getEmployeesFromXML();
 			a1.addEmployee();
-			// employeeService.eMPLOYEEGETBYID("EMP10004");
-			// employeeService.EMPLOYEEDELETE("EMP10001");
-			a1.displayEmployee();
-		} catch (Exception e) {
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-
 	}
 
 }

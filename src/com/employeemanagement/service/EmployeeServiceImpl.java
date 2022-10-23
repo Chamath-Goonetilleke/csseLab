@@ -1,6 +1,5 @@
 package com.employeemanagement.service;
 
-
 import org.xml.sax.SAXException;
 
 import com.employeemanagement.commons.CommonConstants;
@@ -38,11 +37,11 @@ public class EmployeeServiceImpl extends AbstractService{
 	public EmployeeServiceImpl() throws XPathExpressionException, SQLException {
 		try {
 			Class.forName(CommonConstants.DRIVER_CLASS);
-			connection = DriverManager.getConnection(p.getProperty(CommonConstants.URL), p.getProperty(CommonConstants.USERNAME),
-					p.getProperty(CommonConstants.PASSWORD));
-		}catch (ClassNotFoundException e) {
+			connection = DriverManager.getConnection(p.getProperty(CommonConstants.URL),
+					p.getProperty(CommonConstants.USERNAME), p.getProperty(CommonConstants.PASSWORD));
+		} catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		}
 	}
@@ -62,15 +61,13 @@ public class EmployeeServiceImpl extends AbstractService{
 				employee.setDesignation(l.get(CommonConstants.XPATH_DESIGNATION_KEY));
 
 				el.add(employee);
-
 				System.out.println(employee.toString() + "\n");
 			}
-		}catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		}
-		
 	}
 
 	@Override
@@ -79,9 +76,9 @@ public class EmployeeServiceImpl extends AbstractService{
 			statement = connection.createStatement();
 			statement.executeUpdate(QueryUtil.Q(CommonConstants.DROP_EMP));
 			statement.executeUpdate(QueryUtil.Q(CommonConstants.EMP_TABLE_CREATE));
-		}catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		}
 		
@@ -92,8 +89,7 @@ public class EmployeeServiceImpl extends AbstractService{
 		try {
 			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.INSERT_EMP));
 			connection.setAutoCommit(false);
-			for (int i = 0; i < el.size(); i++) {
-				Employee employee = el.get(i);
+			for (Employee employee : el) {
 				preparedStatement.setString(1, employee.getEmployeeId());
 				preparedStatement.setString(2, employee.getFullName());
 				preparedStatement.setString(3, employee.getAddress());
@@ -104,9 +100,9 @@ public class EmployeeServiceImpl extends AbstractService{
 			}
 			preparedStatement.executeBatch();
 			connection.commit();
-		}catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		}
 		
@@ -130,9 +126,9 @@ public class EmployeeServiceImpl extends AbstractService{
 			ArrayList<Employee> l = new ArrayList<Employee>();
 			l.add(employee);
 			employeeOutput(l);
-		}catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		}
 		
@@ -144,12 +140,11 @@ public class EmployeeServiceImpl extends AbstractService{
 			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.DELETE_EMP_BY_ID));
 			preparedStatement.setString(1, employeeId);
 			preparedStatement.executeUpdate();
-		}catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -171,9 +166,9 @@ public class EmployeeServiceImpl extends AbstractService{
 				employee.setDesignation(resultSet.getString(6));
 				employeeList.add(employee);
 			}
-		}catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		}
 		employeeOutput(employeeList);
@@ -186,15 +181,13 @@ public class EmployeeServiceImpl extends AbstractService{
 				+ "Department" + "\t\t" + "Designation" + "\n");
 		System.out.println(
 				"================================================================================================================");
-		for (int i = 0; i < l.size(); i++) {
-			Employee e = l.get(i);
-			System.out.println(e.getEmployeeId() + "\t" + e.getFullName() + "\t\t" + e.getAddress() + "\t"
-					+ e.getFacultyName() + "\t" + e.getDepartment() + "\t" + e.getDesignation() + "\n");
+		for (Employee employee : l) {
+			System.out.println(employee.getEmployeeId() + "\t" + employee.getFullName() + "\t\t" + employee.getAddress()
+					+ "\t" + employee.getFacultyName() + "\t" + employee.getDepartment() + "\t"
+					+ employee.getDesignation() + "\n");
 			System.out.println(
 					"----------------------------------------------------------------------------------------------------------------");
 		}
-		
 	}
 
-	
 }
