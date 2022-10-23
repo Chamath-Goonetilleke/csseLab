@@ -73,8 +73,8 @@ public class EmployeeServiceImpl extends AbstractService{
 		try {
 //			create Statements
 			statement = connection.createStatement();
-			statement.executeUpdate(QueryUtil.Q(CommonConstants.DROP_EMP));
-			statement.executeUpdate(QueryUtil.Q(CommonConstants.EMP_TABLE_CREATE));
+			statement.executeUpdate(QueryUtil.quary(CommonConstants.DROP_EMP));
+			statement.executeUpdate(QueryUtil.quary(CommonConstants.EMP_TABLE_CREATE));
 			
 		} catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
@@ -88,15 +88,15 @@ public class EmployeeServiceImpl extends AbstractService{
 	@Override
 	public void addEmployee() throws Exception {
 		try {
-			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.INSERT_EMP));
+			preparedStatement = connection.prepareStatement(QueryUtil.quary(CommonConstants.INSERT_EMP));
 			connection.setAutoCommit(false);
 			for (Employee employee : employeeList) {
-				preparedStatement.setString(1, employee.getEmployeeId());
-				preparedStatement.setString(2, employee.getFullName());
-				preparedStatement.setString(3, employee.getAddress());
-				preparedStatement.setString(4, employee.getFacultyName());
-				preparedStatement.setString(5, employee.getDepartment());
-				preparedStatement.setString(6, employee.getDesignation());
+				preparedStatement.setString(CommonConstants.ONE, employee.getEmployeeId());
+				preparedStatement.setString(CommonConstants.TWO, employee.getFullName());
+				preparedStatement.setString(CommonConstants.THREE, employee.getAddress());
+				preparedStatement.setString(CommonConstants.FOUR, employee.getFacultyName());
+				preparedStatement.setString(CommonConstants.FIVE, employee.getDepartment());
+				preparedStatement.setString(CommonConstants.SIX, employee.getDesignation());
 				preparedStatement.addBatch();
 			}
 			preparedStatement.executeBatch();
@@ -114,20 +114,20 @@ public class EmployeeServiceImpl extends AbstractService{
 	public void getEmployeeById(String employeeId) throws Exception {
 		Employee employee = new Employee();
 		try {
-			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.GET_EMP_BY_ID));
-			preparedStatement.setString(1, employeeId);
+			preparedStatement = connection.prepareStatement(QueryUtil.quary(CommonConstants.GET_EMP_BY_ID));
+			preparedStatement.setString(CommonConstants.ONE, employeeId);
 			ResultSet R = preparedStatement.executeQuery();
 			while (R.next()) {
-				employee.setEmployeeId(R.getString(1));
-				employee.setFullName(R.getString(2));
-				employee.setAddress(R.getString(3));
-				employee.setFacultyName(R.getString(4));
-				employee.setDepartment(R.getString(5));
-				employee.setDesignation(R.getString(6));
+				employee.setEmployeeId(R.getString(CommonConstants.ONE));
+				employee.setFullName(R.getString(CommonConstants.TWO));
+				employee.setAddress(R.getString(CommonConstants.THREE));
+				employee.setFacultyName(R.getString(CommonConstants.FOUR));
+				employee.setDepartment(R.getString(CommonConstants.FIVE));
+				employee.setDesignation(R.getString(CommonConstants.SIX));
 			}
-			ArrayList<Employee> l = new ArrayList<Employee>();
-			l.add(employee);
-			employeeOutput(l);
+			ArrayList<Employee> employeeList = new ArrayList<Employee>();
+			employeeList.add(employee);
+			employeeOutput(employeeList);
 		} catch (ClassNotFoundException e) {
 			LOG.log(Level.SEVERE, e.getMessage());
 		} catch (SQLException e) {
@@ -140,7 +140,7 @@ public class EmployeeServiceImpl extends AbstractService{
 	@Override
 	public void deleteEmployee(String employeeId) {
 		try {
-			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.DELETE_EMP_BY_ID));
+			preparedStatement = connection.prepareStatement(QueryUtil.quary(CommonConstants.DELETE_EMP_BY_ID));
 			preparedStatement.setString(1, employeeId);
 			preparedStatement.executeUpdate();
 		} catch (ClassNotFoundException e) {
@@ -158,17 +158,17 @@ public class EmployeeServiceImpl extends AbstractService{
 	public void displayEmployee() throws Exception {
 		ArrayList<Employee> employeeList = new ArrayList<Employee>();
 		try {
-			preparedStatement = connection.prepareStatement(QueryUtil.Q(CommonConstants.GET_ALL_EMP));
+			preparedStatement = connection.prepareStatement(QueryUtil.quary(CommonConstants.GET_ALL_EMP));
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 //				Create Employee Object
 				Employee employee = new Employee();
-				employee.setEmployeeId(resultSet.getString(1));
-				employee.setFullName(resultSet.getString(2));
-				employee.setAddress(resultSet.getString(3));
-				employee.setFacultyName(resultSet.getString(4));
-				employee.setDepartment(resultSet.getString(5));
-				employee.setDesignation(resultSet.getString(6));
+				employee.setEmployeeId(resultSet.getString(CommonConstants.ONE));
+				employee.setFullName(resultSet.getString(CommonConstants.TWO));
+				employee.setAddress(resultSet.getString(CommonConstants.THREE));
+				employee.setFacultyName(resultSet.getString(CommonConstants.FOUR));
+				employee.setDepartment(resultSet.getString(CommonConstants.FIVE));
+				employee.setDesignation(resultSet.getString(CommonConstants.SIX));
 				employeeList.add(employee);
 			}
 		} catch (ClassNotFoundException e) {
@@ -182,13 +182,13 @@ public class EmployeeServiceImpl extends AbstractService{
 
 //	Display Employee Details
 	@Override
-	public void employeeOutput(ArrayList<Employee> l) {
+	public void employeeOutput(ArrayList<Employee> employeeList) {
 
 		LOG.info("Employee ID" + "\t\t" + "Full Name" + "\t\t" + "Address" + "\t\t" + "Faculty Name" + "\t\t"
 				+ "Department" + "\t\t" + "Designation" + "\n");
 
 		LOG.info("================================================================================================================");
-		for (Employee employee : l) {
+		for (Employee employee : employeeList) {
 
 			LOG.info(employee.getEmployeeId() + "\t" + employee.getFullName() + "\t\t" + employee.getAddress()
 			+ "\t" + employee.getFacultyName() + "\t" + employee.getDepartment() + "\t"
