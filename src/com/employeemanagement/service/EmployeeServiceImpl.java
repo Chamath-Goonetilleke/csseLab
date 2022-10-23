@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class EmployeeServiceImpl extends c1 implements EmployeeService{
+public class EmployeeServiceImpl extends AbstractService{
 
 	private final ArrayList<Employee> el = new ArrayList<Employee>();
 	public static final Logger LOG = Logger.getLogger(EmployeeServiceImpl.class.getName());
