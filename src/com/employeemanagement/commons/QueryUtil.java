@@ -23,7 +23,7 @@ public class QueryUtil extends c1 {
 		n = DocumentBuilderFactory.newInstance().newDocumentBuilder()
 				.parse(new File(CommonConstants.PATH_TO_EMPLOYEE_QUERY_FILE))
 				.getElementsByTagName(CommonConstants.QUERY);
-		for (int x = 0; x < n.getLength(); x++) {
+		for (int x = CommonConstants.ZERO; x < n.getLength(); x++) {
 			e = (Element) n.item(x);
 			if (e.getAttribute(CommonConstants.ID).equals(id))
 				break;

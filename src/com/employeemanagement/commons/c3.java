@@ -47,7 +47,7 @@ public class c3 extends c1 {
                         + CommonConstants.XML_PATH_PREFIX + CommonConstants.RIGHT_PARANTHESIS)
                 .evaluate(document, XPathConstants.STRING));
 
-        for (int i = 1; i <= n; i++) {
+        for (int i = CommonConstants.ONE; i <= n; i++) {
             m = new HashMap<String, String>();
             m.put(CommonConstants.XPATH_EMPLOYEE_ID_KEY,
                     (String) employeeRequest.compile(CommonConstants.XML_PATH_PREFIX + CommonConstants.LEFT_BRACKET + i

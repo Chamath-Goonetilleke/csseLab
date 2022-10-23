@@ -99,5 +99,9 @@ public class CommonConstants {
 	public static final String RIGHT_PARANTHESIS = ")";
 
 	public static final String COUNT_METHOD_NAME = "count";
+	
+	public static final int ZERO = 0;
+	
+	public static final int ONE = 1;
 
 }
