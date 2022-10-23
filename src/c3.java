@@ -22,7 +22,7 @@ public class c3 extends c1 {
 	private static final ArrayList<Map<String, String>> l = new ArrayList<Map<String, String>>();
 
 	private static Map<String, String> m = null;
-	//public static final Logger LOG = Logger.getLogger(AbstractService.class.getName());
+	public static final Logger LOG = Logger.getLogger(c3.class.getName());
 
 	public static void RequestTransform() throws Exception {
 
@@ -55,11 +55,13 @@ public class c3 extends c1 {
 				m.put("XpathDesignationKey", (String) employeeRequest.compile("//Employees/Employee[" + i + "]/Designation/text()")
 						.evaluate(document, XPathConstants.STRING));
 				l.add(m);
+				
+			}
 		}catch(XPathExpressionException e) {
-			
+			LOG.info("");
 		}
 			
-		}
+		
 		return l;
 	}
 

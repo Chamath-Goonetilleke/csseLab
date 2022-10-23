@@ -40,9 +40,9 @@ public class a extends c1 {
 	public void a2() {
 
 		try {
-			int s = c3.XMLXPATHS().size();
+			int s = c3.xmlXPath().size();
 			for (int i = 0; i < s; i++) {
-				Map<String, String> l = c3.XMLXPATHS().get(i);
+				Map<String, String> l = c3.xmlXPath().get(i);
 				Employee employee = new Employee();
 				employee.setEmployeeId(l.get("XpathEmployeeIDKey"));
 				employee.setFullName(l.get("XpathEmployeeNameKey"));
