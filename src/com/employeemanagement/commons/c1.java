@@ -4,9 +4,6 @@ package com.employeemanagement.commons;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.employeemanagement.commons.CommonConstants;
-import com.employeemanagement.service.EmployeeServiceImpl;
-
 import java.io.IOException;
 import java.util.Properties;
 

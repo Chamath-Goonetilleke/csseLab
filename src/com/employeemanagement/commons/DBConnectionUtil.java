@@ -7,7 +7,6 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.employeemanagement.commons.CommonConstants;
 import com.employeemanagement.service.EmployeeServiceImpl;
 
 public class DBConnectionUtil {
