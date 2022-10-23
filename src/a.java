@@ -22,22 +22,22 @@ public class a extends c1 {
 
 	private final ArrayList<Employee> el = new ArrayList<Employee>();
 
-	private static Connection c;
+	private static Connection connection;
 
-	private static Statement s;
+	private static Statement statement;
 
-	private PreparedStatement ps;
+	private PreparedStatement preparedStatement;
 
 	public a() {
 		try {
 			Class.forName(CommonConstants.DRIVER_CLASS);
-			c = DriverManager.getConnection(p.getProperty(CommonConstants.URL), p.getProperty(CommonConstants.USERNAME),
+			connection = DriverManager.getConnection(p.getProperty(CommonConstants.URL), p.getProperty(CommonConstants.USERNAME),
 					p.getProperty(CommonConstants.PASSWORD));
 		} catch (Exception e) {
 		}
 	}
 
-	public void a2() {
+	public void getEmployeesFromXML() {
 
 		try {
 			int s = c3.xmlXPath().size();
@@ -59,31 +59,31 @@ public class a extends c1 {
 		}
 	}
 
-	public void a3() {
+	public void createEmployeeTable() {
 		try {
-			s = c.createStatement();
-			s.executeUpdate(c2.Q(CommonConstants.Q2));
-			s.executeUpdate(c2.Q(CommonConstants.Q1));
+			statement = connection.createStatement();
+			statement.executeUpdate(c2.Q(CommonConstants.Q2));
+			statement.executeUpdate(c2.Q(CommonConstants.Q1));
 		} catch (Exception e) {
 		}
 	}
 
-	public void a4() {
+	public void addEmployee() {
 		try {
-			ps = c.prepareStatement(c2.Q(CommonConstants.Q3));
-			c.setAutoCommit(false);
+			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.Q3));
+			connection.setAutoCommit(false);
 			for (int i = 0; i < el.size(); i++) {
 				Employee employee = el.get(i);
-				ps.setString(1, employee.getEmployeeId());
-				ps.setString(2, employee.getFullName());
-				ps.setString(3, employee.getAddress());
-				ps.setString(4, employee.getFacultyName());
-				ps.setString(5, employee.getDepartment());
-				ps.setString(6, employee.getDesignation());
-				ps.addBatch();
+				preparedStatement.setString(1, employee.getEmployeeId());
+				preparedStatement.setString(2, employee.getFullName());
+				preparedStatement.setString(3, employee.getAddress());
+				preparedStatement.setString(4, employee.getFacultyName());
+				preparedStatement.setString(5, employee.getDepartment());
+				preparedStatement.setString(6, employee.getDesignation());
+				preparedStatement.addBatch();
 			}
-			ps.executeBatch();
-			c.commit();
+			preparedStatement.executeBatch();
+			connection.commit();
 		} catch (Exception e) {
 		}
 	}
@@ -92,9 +92,9 @@ public class a extends c1 {
 
 		Employee employee = new Employee();
 		try {
-			ps = c.prepareStatement(c2.Q(CommonConstants.Q4));
-			ps.setString(1, eid);
-			ResultSet R = ps.executeQuery();
+			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.Q4));
+			preparedStatement.setString(1, eid);
+			ResultSet R = preparedStatement.executeQuery();
 			while (R.next()) {
 				employee.setEmployeeId(R.getString(1));
 				employee.setFullName(R.getString(2));
@@ -113,33 +113,33 @@ public class a extends c1 {
 	public void deleteEmployee(String eid) {
 
 		try {
-			ps = c.prepareStatement(c2.Q(CommonConstants.Q6));
-			ps.setString(1, eid);
-			ps.executeUpdate();
+			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.Q6));
+			preparedStatement.setString(1, eid);
+			preparedStatement.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void a5() {
+	public void displayEmployee() {
 
-		ArrayList<Employee> l = new ArrayList<Employee>();
+		ArrayList<Employee> employeeList = new ArrayList<Employee>();
 		try {
-			ps = c.prepareStatement(c2.Q(CommonConstants.Q5));
-			ResultSet r = ps.executeQuery();
-			while (r.next()) {
+			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.Q5));
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
 				Employee employee = new Employee();
-				employee.setEmployeeId(r.getString(1));
-				employee.setFullName(r.getString(2));
-				employee.setAddress(r.getString(3));
-				employee.setFacultyName(r.getString(4));
-				employee.setDepartment(r.getString(5));
-				employee.setDesignation(r.getString(6));
-				l.add(employee);
+				employee.setEmployeeId(resultSet.getString(1));
+				employee.setFullName(resultSet.getString(2));
+				employee.setAddress(resultSet.getString(3));
+				employee.setFacultyName(resultSet.getString(4));
+				employee.setDepartment(resultSet.getString(5));
+				employee.setDesignation(resultSet.getString(6));
+				employeeList.add(employee);
 			}
 		} catch (Exception e) {
 		}
-		employeeOutput(l);
+		employeeOutput(employeeList);
 	}
 
 	public void employeeOutput(ArrayList<Employee> l) {
