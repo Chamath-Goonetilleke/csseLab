@@ -27,6 +27,7 @@ import java.util.Map;
 public class employeeServiceImpl extends c1 {
 
 	private final ArrayList<Employee> el = new ArrayList<Employee>();
+	public static final Logger LOG = Logger.getLogger(employeeServiceImpl.class.getName());
 
 	private static Connection connection;
 
@@ -34,16 +35,19 @@ public class employeeServiceImpl extends c1 {
 
 	private PreparedStatement preparedStatement;
 
-	public employeeServiceImpl() {
+	public employeeServiceImpl() throws XPathExpressionException, SQLException {
 		try {
 			Class.forName(CommonConstants.DRIVER_CLASS);
 			connection = DriverManager.getConnection(p.getProperty(CommonConstants.URL), p.getProperty(CommonConstants.USERNAME),
 					p.getProperty(CommonConstants.PASSWORD));
-		} catch (Exception e) {
+		}catch (ClassNotFoundException e) {
+			LOG.log(Level.SEVERE, e.getMessage());
+		}catch (SQLException e) {
+			LOG.log(Level.SEVERE, e.getMessage());
 		}
 	}
 
-	public void getEmployeesFromXML() {
+	public void getEmployeesFromXML() throws Exception {
 
 		try {
 			int s = c3.xmlXPath().size();
@@ -61,20 +65,26 @@ public class employeeServiceImpl extends c1 {
 
 				System.out.println(employee.toString() + "\n");
 			}
-		} catch (Exception e) {
+		}catch (ClassNotFoundException e) {
+			LOG.log(Level.SEVERE, e.getMessage());
+		}catch (SQLException e) {
+			LOG.log(Level.SEVERE, e.getMessage());
 		}
 	}
 
-	public void createEmployeeTable() {
+	public void createEmployeeTable() throws Exception {
 		try {
 			statement = connection.createStatement();
 			statement.executeUpdate(c2.Q(CommonConstants.DROP_EMP));
 			statement.executeUpdate(c2.Q(CommonConstants.EMP_TABLE_CREATE));
-		} catch (Exception e) {
+		}catch (ClassNotFoundException e) {
+			LOG.log(Level.SEVERE, e.getMessage());
+		}catch (SQLException e) {
+			LOG.log(Level.SEVERE, e.getMessage());
 		}
 	}
 
-	public void addEmployee() {
+	public void addEmployee() throws Exception {
 		try {
 			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.INSERT_EMP));
 			connection.setAutoCommit(false);
@@ -90,11 +100,14 @@ public class employeeServiceImpl extends c1 {
 			}
 			preparedStatement.executeBatch();
 			connection.commit();
-		} catch (Exception e) {
+		}catch (ClassNotFoundException e) {
+			LOG.log(Level.SEVERE, e.getMessage());
+		}catch (SQLException e) {
+			LOG.log(Level.SEVERE, e.getMessage());
 		}
 	}
 
-	public void getEmployeeById(String eid) {
+	public void getEmployeeById(String eid) throws Exception {
 
 		Employee employee = new Employee();
 		try {
@@ -112,7 +125,10 @@ public class employeeServiceImpl extends c1 {
 			ArrayList<Employee> l = new ArrayList<Employee>();
 			l.add(employee);
 			employeeOutput(l);
-		} catch (Exception ex) {
+		}catch (ClassNotFoundException e) {
+			LOG.log(Level.SEVERE, e.getMessage());
+		}catch (SQLException e) {
+			LOG.log(Level.SEVERE, e.getMessage());
 		}
 	}
 
@@ -122,12 +138,17 @@ public class employeeServiceImpl extends c1 {
 			preparedStatement = connection.prepareStatement(c2.Q(CommonConstants.DELETE_EMP_BY_ID));
 			preparedStatement.setString(1, eid);
 			preparedStatement.executeUpdate();
+		}catch (ClassNotFoundException e) {
+			LOG.log(Level.SEVERE, e.getMessage());
+		}catch (SQLException e) {
+			LOG.log(Level.SEVERE, e.getMessage());
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public void displayEmployee() {
+	public void displayEmployee() throws Exception {
 
 		ArrayList<Employee> employeeList = new ArrayList<Employee>();
 		try {
@@ -143,7 +164,10 @@ public class employeeServiceImpl extends c1 {
 				employee.setDesignation(resultSet.getString(6));
 				employeeList.add(employee);
 			}
-		} catch (Exception e) {
+		}catch (ClassNotFoundException e) {
+			LOG.log(Level.SEVERE, e.getMessage());
+		}catch (SQLException e) {
+			LOG.log(Level.SEVERE, e.getMessage());
 		}
 		employeeOutput(employeeList);
 	}
