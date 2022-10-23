@@ -6,12 +6,12 @@ import com.employeemanagement.model.Employee;
 
 public interface EmployeeService {
 	
-	void getEmployeesFromXML();
-	void createEmployeeTable();
-	void addEmployee();
-	void getEmployeeById(String employeeId);
+	void getEmployeesFromXML() throws Exception;
+	void createEmployeeTable() throws Exception;
+	void addEmployee() throws Exception;
+	void getEmployeeById(String employeeId) throws Exception;
 	void deleteEmployee(String employeeId);
-	void displayEmployee();
+	void displayEmployee() throws Exception;
 	void employeeOutput(ArrayList<Employee> l);
 
 }
