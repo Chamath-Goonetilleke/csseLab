@@ -42,13 +42,14 @@ public class a extends c1 {
 			for (int i = 0; i < s; i++) {
 				Map<String, String> l = c3.XMLXPATHS().get(i);
 				Employee employee = new Employee();
-				employee.eMPLOYEEiD(l.get("XpathEmployeeIDKey"));
-				employee.fULLnAME(l.get("XpathEmployeeNameKey"));
-				employee.aDDRESS(l.get("XpathEmployeeAddressKey"));
-				employee.fACULTYNAME(l.get("XpathFacultyNameKey"));
-				employee.dEPARTMENT(l.get("XpathDepartmentKey"));
-				employee.dESIGNATION(l.get("XpathDesignationKey"));
+				employee.setEmployeeId(l.get("XpathEmployeeIDKey"));
+				employee.setFullName(l.get("XpathEmployeeNameKey"));
+				employee.setAddress(l.get("XpathEmployeeAddressKey"));
+				employee.setFacultyName(l.get("XpathFacultyNameKey"));
+				employee.setDepartment(l.get("XpathDepartmentKey"));
+				employee.setDesignation(l.get("XpathDesignationKey"));;
 				el.add(employee);
+				
 				System.out.println(employee.toString() + "\n");
 			}
 		} catch (Exception e) {
@@ -69,13 +70,13 @@ public class a extends c1 {
 			ps = c.prepareStatement(c2.Q("q3"));
 			c.setAutoCommit(false);
 			for(int i = 0; i < el.size(); i++){
-				Employee e = el.get(i);
-				ps.setString(1, e.EMPLOYEEiDgET());
-				ps.setString(2, e.fULLnAMEgET());
-				ps.setString(3, e.aDDRESSgET());
-				ps.setString(4, e.fACULTYnAMEgET());
-				ps.setString(5, e.dEPARTMENTgET());
-				ps.setString(6, e.dESIGNATIONgET());
+				Employee employee = el.get(i);
+				ps.setString(1, employee.getEmployeeId());
+				ps.setString(2, employee.getFullName());
+				ps.setString(3, employee.getAddress());
+				ps.setString(4, employee.getFacultyName());
+				ps.setString(5, employee.getDepartment());
+				ps.setString(6, employee.getDesignation());
 				ps.addBatch();
 			}
 			ps.executeBatch();
@@ -86,21 +87,21 @@ public class a extends c1 {
 
 	public void eMPLOYEEGETBYID(String eid) {
 
-		Employee e = new Employee();
+		Employee employee = new Employee();
 		try {
 			ps = c.prepareStatement(c2.Q("q4"));
 			ps.setString(1, eid);
 			ResultSet R = ps.executeQuery();
 			while (R.next()) {
-				e.eMPLOYEEiD(R.getString(1));
-				e.fULLnAME(R.getString(2));
-				e.aDDRESS(R.getString(3));
-				e.fACULTYNAME(R.getString(4));
-				e.dEPARTMENT(R.getString(5));
-				e.dESIGNATION(R.getString(6));
+				employee.setEmployeeId(R.getString(1));
+				employee.setFullName(R.getString(2));
+				employee.setAddress(R.getString(3));
+				employee.setFacultyName(R.getString(4));
+				employee.setDepartment(R.getString(5));
+				employee.setDesignation(R.getString(6));
 			}
 			ArrayList<Employee> l = new ArrayList<Employee>();
-			l.add(e);
+			l.add(employee);
 			eMPLOYEEoUTPUT(l);
 		} catch (Exception ex) {
 		}
@@ -124,14 +125,14 @@ public class a extends c1 {
 			ps = c.prepareStatement(c2.Q("q5"));
 			ResultSet r = ps.executeQuery();
 			while (r.next()) {
-				Employee e = new Employee();
-				e.eMPLOYEEiD(r.getString(1));
-				e.fULLnAME(r.getString(2));
-				e.aDDRESS(r.getString(3));
-				e.fACULTYNAME(r.getString(4));
-				e.dEPARTMENT(r.getString(5));
-				e.dESIGNATION(r.getString(6));
-				l.add(e);
+				Employee employee = new Employee();
+				employee.setEmployeeId(r.getString(1));
+				employee.setFullName(r.getString(2));
+				employee.setAddress(r.getString(3));
+				employee.setFacultyName(r.getString(4));
+				employee.setDepartment(r.getString(5));
+				employee.setDesignation(r.getString(6));
+				l.add(employee);
 			}
 		} catch (Exception e) {
 		}
@@ -146,9 +147,9 @@ public class a extends c1 {
 				.println("================================================================================================================");
 		for(int i = 0; i < l.size(); i++){
 			Employee e = l.get(i);
-			System.out.println(e.EMPLOYEEiDgET() + "\t" + e.fULLnAMEgET() + "\t\t"
-					+ e.aDDRESSgET() + "\t" + e.fACULTYnAMEgET() + "\t" + e.dEPARTMENTgET() + "\t"
-					+ e.dESIGNATIONgET() + "\n");
+			System.out.println(e.getEmployeeId() + "\t" + e.getFullName() + "\t\t"
+					+ e.getAddress()+ "\t" + e.getFacultyName() + "\t" + e.getDepartment() + "\t"
+					+ e.getDesignation() + "\n");
 			System.out
 			.println("----------------------------------------------------------------------------------------------------------------");
 		}
